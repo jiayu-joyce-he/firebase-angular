@@ -30,6 +30,11 @@ export class AppComponent {
     if (this.firebaseService.isLoggedIn) this.isSignedIn = true;
   }
 
+  async onSigninWithGoogle() {
+    await this.firebaseService.loginWithGoogle();
+    if (this.firebaseService.isLoggedIn) this.isSignedIn = true;
+  }
+
   handleLogout() {
     this.isSignedIn = false;
   }

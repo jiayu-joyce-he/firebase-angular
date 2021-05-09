@@ -1,5 +1,3 @@
-<h1>hello world!</h1>
-
 <div *ngIf="!isSignedIn">
   <h2>Sign up</h2>
   <input type="text" #emailSignup />
@@ -17,6 +15,12 @@
   <button (click)="onSignin(emailSignin.value, passwordSignin.value)">
     Sign In
   </button>
+</div>
+
+<hr />
+<div *ngIf="!isSignedIn">
+  <h2>Or</h2>
+  <button (click)="onSigninWithGoogle()">Sign In with Google</button>
 </div>
 
 <app-home *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-home>

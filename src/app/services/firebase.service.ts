@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +26,16 @@ export class FirebaseService {
         this.isLoggedIn = true;
         localStorage.setItem('user', JSON.stringify(res.user));
       });
+  }
+
+  async loginWithGoogle() {
+    await this.firebaseAuth
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((res) => {
+        this.isLoggedIn = true;
+        console.log('Successfully login with Google');
+      })
+      .catch((error) => console.log(error));
   }
 
   logout() {
